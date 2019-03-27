@@ -1,5 +1,6 @@
 import React from 'react';
-import { Field } from 'react-final-form'
+import PropTypes from 'prop-types';
+import { Field } from 'react-final-form';
 
 import BEM from 'services/bem';
 import { composeValidators, required, carNumber } from 'helpers/validators';
@@ -11,6 +12,10 @@ const bem = BEM('search-form');
 
 export default class SearchForm extends React.PureComponent {
   static displayName = 'SearchForm';
+
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+  };
 
   render() {
     const { handleSubmit } = this.props;

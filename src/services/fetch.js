@@ -58,7 +58,7 @@ export default (action = actionDefault, config = {}) => Component =>
 
     fetch = (fetchId) => {
       action({ ...this.props, ...this.state.injectedProps })
-        .then(async(fetched = {}) => {
+        .then(async (fetched = {}) => {
           if (fetchId !== this.fetchId) return;
 
           await FetchDecorator.config.onSuccess({ ...this.props, ...fetched });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import BEM from 'services/bem';
 
@@ -9,8 +10,22 @@ const bem = BEM('text-input');
 export default class TextInput extends React.PureComponent {
   static displayName = 'TextInput';
 
+  static propTypes = {
+    id: PropTypes.string,
+    placeholder: PropTypes.string,
+    meta: PropTypes.bool.isRequired,
+    input: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    id: undefined,
+    placeholder: undefined,
+  };
+
   render() {
-    const { input, meta, id, placeholder } = this.props;
+    const {
+      input, meta, id, placeholder,
+    } = this.props;
 
     return (
       <label htmlFor={id} className={bem()}>

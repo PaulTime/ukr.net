@@ -17,29 +17,29 @@ const HOST = process.env.NODE_ENV === 'production' ? process.env.API_HOST : '';
   {
     filter: ({ location }) => Boolean(location.query.search),
     loader: false,
-  }
+  },
 )
 export default class HintPage extends React.PureComponent {
   static displayName = 'HintPage';
 
   static propTypes = {
-    fetch: PropTypes.func,
-    query: PropTypes.string,
-    loading: PropTypes.bool,
+    fetch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
     result: PropTypes.shape({
       owner: PropTypes.string,
       year: PropTypes.number,
       crashesCount: PropTypes.number,
       ownersCount: PropTypes.number,
-    }),
+    }).isRequired,
+    location: PropTypes.object.isRequired,
   };
 
   componentDidUpdate(prevProps) {
-    const { location, fetch } = this.props;
+    const { location, fetch: fetchOnUpdate } = this.props;
     const { location: oldLocation } = prevProps;
 
     if (location.query.search !== oldLocation.query.search) {
-      fetch()
+      fetchOnUpdate();
     }
   }
 

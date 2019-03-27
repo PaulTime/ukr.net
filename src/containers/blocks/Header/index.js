@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Form } from 'react-final-form';
 import qs from 'query-string';
@@ -14,10 +15,20 @@ const bem = BEM('header');
 export default class Header extends React.PureComponent {
   static displayName = 'Header';
 
-  onSubmit = values => {
+  static propTypes = {
+    location: PropTypes.object,
+    history: PropTypes.object,
+  };
+
+  static defaultProps = {
+    location: undefined,
+    history: undefined,
+  };
+
+  onSubmit = (values) => {
     const { location, history } = this.props;
 
-    history.replace(`${location.pathname}?${qs.stringify(values)}`)
+    history.replace(`${location.pathname}?${qs.stringify(values)}`);
   };
 
   render() {

@@ -28,12 +28,14 @@ export default class LayoutRoute extends React.Component {
 
   static propTypes = {
     path: PropTypes.string,
+    location: PropTypes.object.isRequired,
     component: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     children: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
   };
 
   static defaultProps = {
     component: React.Fragment,
+    path: undefined,
   };
 
   get location() {
@@ -42,7 +44,7 @@ export default class LayoutRoute extends React.Component {
     return {
       ...location,
       query: qs.parse(location.search),
-    }
+    };
   }
 
   clone = child =>

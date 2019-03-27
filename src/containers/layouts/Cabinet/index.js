@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import BEM from 'services/bem';
 import Header from 'containers/blocks/Header';
 
-const bem = BEM('layout');
-
 import './index.scss';
+
+const bem = BEM('layout');
 
 export default class CabinetLayout extends React.PureComponent {
   static displayName = 'CabinetLayout';

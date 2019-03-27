@@ -8,7 +8,7 @@ Open in browser http://localhost:3000
 
 ## production
 ```
-npm i
+npm ci
 npm run build
 npm run start:server
 npm run start:client
